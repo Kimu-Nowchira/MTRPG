@@ -1,0 +1,87 @@
+[
+  {
+    "id": "DUN",
+    "name": "던전용 식량",
+    "description": "???",
+    "weight": 0.2
+  },
+  {
+    "id": "GA",
+    "name": "가죽 갑옷",
+    "description": "장갑 +1",
+    "weight": 1
+  },
+  {
+    "id": "TAGITU",
+    "name": "타기트 기름",
+    "description": "[투여형 독] 대상은 가벼운 잠에 빠집니다.",
+    "weight": 0
+  },
+  {
+    "id": "BACK",
+    "name": "박혈초",
+    "description": "[접촉형 독] 독이 풀릴 때까지, 대상이 가하는 피해가 -1d4만큼 줄어듭니다.",
+    "weight": 0
+  },
+  {
+    "id": "GOLDICK",
+    "name": "황금근",
+    "description": "[투여형 독] 대상은 약이 투여된 후 처음으로 본 존재를 믿을 만한 친구라고 생각하게 됩니다. 그 존재가 친구답지 않은 행동을 하면 효과는 풀립니다.",
+    "weight": 0
+  },
+  {
+    "id": "BAMCRYING",
+    "name": "뱀눈물",
+    "description": "[접촉형 독] 대상에게 피해를 가하는 사람은 피해 주사위를 두 번 굴려서 그 중 높은 쪽을 취합니다.",
+    "weight": 0
+  },
+  {
+    "id": "DANDO",
+    "name": "단도",
+    "description": "[반걸음 근거리]",
+    "weight": 1
+  },
+  {
+    "id": "SMALLSWORD",
+    "name": "소검",
+    "description": "[한 걸음 근거리]",
+    "weight": 1
+  },
+  {
+    "name": "레이피어",
+    "id": "RAPIER",
+    "description": "[한 걸음 정밀 근거리]",
+    "weight": 1
+  },
+  {
+    "name": "투척용 단검",
+    "id": "THROWINGKNIFE",
+    "description": "[투척형 중거리]",
+    "weight": 0
+  },
+  {
+    "name": "낡은 활",
+    "id": "OLD_BOW",
+    "description": "[중거리]",
+    "weight": 2
+  },
+  {
+    "name": "화살",
+    "id": "ARROW",
+    "description": "활을 사용할 수 있게 해 준다. 세 발에 한 다발.",
+    "weight": 0.3
+  },
+  {
+    "name": "모험 장비",
+    "id": "ADVENTURE",
+    "description": "“모험 장비”는 백묵, 장대, 못, 밧줄 같이 평범하지만 유용한 물건들을 한데 모은 추상적인 집합입니다. 모험 장비를 뒤지면 평범하고 유용한 물건이 하나 나오고, 1회분이 소모됩니다.",
+    "weight": 0.2
+  },
+  {
+    "name": "치료약",
+    "id": "HEALING",
+    "description": "치료약 한 병을 통째로 들이키면 10HP가 회복되거나 약화 효과가 하나 사라집니다. (플레이어가 고릅니다.)",
+    "weight": 0,
+    "cost": 50
+  }
+]
