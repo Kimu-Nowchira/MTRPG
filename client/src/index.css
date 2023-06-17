@@ -3,8 +3,7 @@
 body {
   padding: 0;
   margin: 0;
-  /* tailwind/neutral/400 */
-  background: #a3a3a3;
+
   height: 100vh;
 }
 
@@ -14,5 +13,15 @@ body {
 }
 
 :root {
-  background-color: #27272a;
+  background-color: var(--color-stone-800) !important;
+  --color-stone-50: #fafaf9;
+  --color-stone-100: #f5f5f4;
+  --color-stone-200: #e7e5e4;
+  --color-stone-300: #d6d3d1;
+  --color-stone-400: #a8a29e;
+  --color-stone-500: #78716c;
+  --color-stone-600: #57534e;
+  --color-stone-700: #44403c;
+  --color-stone-800: #292524;
+  --color-stone-900: #1c1917;
 }

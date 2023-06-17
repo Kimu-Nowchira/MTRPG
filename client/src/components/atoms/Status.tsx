@@ -1,5 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import { Box, Text } from "@chakra-ui/react"
+import { getModifier } from "../../utils/dungeonWorld"
 
 const StatusLabel = styled.span`
   font-weight: 700;
@@ -14,8 +16,8 @@ const StatusStyled = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
-  
+  gap: 5px;
+
   width: 100%;
 `
 
@@ -51,15 +53,15 @@ const StatusTag = styled.div<{ stt: StatusType }>`
   justify-content: center;
   align-items: center;
 
-  width: 55px;
-  height: 29px;
+  width: 47px;
+  height: 25px;
 
   /* tailwind/red/500 */
   background: ${({ stt }) => StatusColorMap.get(stt)};
   border-radius: 10px;
 
   font-weight: 600;
-  font-size: 16px;
+  font-size: 12px;
   color: #fff;
 `
 
@@ -68,28 +70,14 @@ const Status: React.FC<{ statusType: StatusType; value: number }> = ({
   value,
 }) => {
   return (
-    <StatusStyled>
+    <Box display="flex" flexDir="row" gap="8px" w="120px">
       <StatusTag stt={statusType}>{StatusNameMap.get(statusType)}</StatusTag>
-      <StatusLabel>{`${value} (${putSignOnNumber(
-        getStatusRealValue(value)
-      )})`}</StatusLabel>
-    </StatusStyled>
+      <Text as="b">{`${value} (${putSignOnNumber(getModifier(value))})`}</Text>
+    </Box>
   )
 }
 
 const putSignOnNumber = (num: number): string =>
   num < 0 ? `${num}` : `+${num}`
-
-const getStatusRealValue = (value: number) => {
-  if (value <= 0) return -4
-  if (value <= 3) return -3
-  if (value <= 5) return -2
-  if (value <= 8) return -1
-  if (value <= 12) return 0
-  if (value <= 15) return 1
-  if (value <= 17) return 2
-  if (value <= 18) return 3
-  return 4
-}
 
 export default Status
