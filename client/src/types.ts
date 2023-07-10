@@ -1,4 +1,4 @@
-export interface User {
+export interface Player {
   id: string
   name: string
   level: number
@@ -7,16 +7,21 @@ export interface User {
   job: string
   species: string
   description: string
-  status: UserStatus
+  status: PlayerStatus
 }
 
-export interface UserStatus {
+export interface PlayerStatus {
   constitution: number
   strength: number
   dexterity: number
   intelligence: number
   wisdom: number
   charisma: number
+}
+
+export interface IGameLog {
+  id?: string
+  content: string
 }
 
 export interface ItemData {

@@ -2,30 +2,9 @@ import StatusGroup from "../molecules/StatusGroup"
 import React from "react"
 import styled from "styled-components"
 import ProgressBar from "../atoms/ProgressBar"
-import { User } from "../../types"
-import { Card, CardBody, HStack, IconButton, VStack } from "@chakra-ui/react"
-import { IconSettings } from "@tabler/icons-react"
+import { Player } from "../../types"
+import { Card, CardBody, Heading, HStack, Text, VStack } from "@chakra-ui/react"
 import EditCharacterModal from "./EditCharacterModal"
-
-const ProfilePaper = styled.div`
-  width: 100%;
-  height: 245px;
-  border-radius: 20px;
-  padding: 20px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-
-  background-color: #fff;
-`
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 0;
-  gap: 15px;
-`
 
 const Column = styled.div`
   display: flex;
@@ -57,7 +36,7 @@ const Label4 = styled.div`
   color: #404040;
 `
 
-const UserProfile: React.FC<{ profile: User }> = ({ profile }) => {
+const UserProfile: React.FC<{ profile: Player }> = ({ profile }) => {
   return (
     <Card h="230px">
       <CardBody gap="10px">
@@ -65,12 +44,16 @@ const UserProfile: React.FC<{ profile: User }> = ({ profile }) => {
         <VStack gap="20px">
           <HStack gap="15px" w="100%">
             <ProfileImage />
-            <Column>
-              <Labal3>{profile.level}레벨 천사</Labal3>
-              <Label4>{profile.name}</Label4>
-              <ProgressBar min={3} max={10} />
-              <ProgressBar min={7} max={10} color={"#0EA5E9"} />
-            </Column>
+            <VStack align={"baseline"} w="100%" gap={3}>
+              <VStack align={"baseline"} gap={0}>
+                <Text>{profile.level}레벨 천사</Text>
+                <Heading fontSize="3xl">{profile.name}</Heading>
+              </VStack>
+              <VStack w="100%" gap={1}>
+                <ProgressBar min={3} max={10} />
+                <ProgressBar min={7} max={10} color={"#0EA5E9"} />
+              </VStack>
+            </VStack>
           </HStack>
           <StatusGroup statusData={profile.status} />
         </VStack>

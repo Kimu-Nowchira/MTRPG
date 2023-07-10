@@ -16,10 +16,10 @@ import {
 } from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
 import GameContext from "../../context/GameContext"
-import { User } from "../../types"
-import { IconSettings } from "@tabler/icons-react"
+import { Player } from "../../types"
+import { AiOutlineSetting } from "react-icons/ai"
 
-const EditCharacterModal: React.FC<{ user: User }> = ({ user }) => {
+const EditCharacterModal: React.FC<{ user: Player }> = ({ user }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const {
     handleSubmit,
@@ -50,9 +50,10 @@ const EditCharacterModal: React.FC<{ user: User }> = ({ user }) => {
     <>
       <IconButton
         aria-label="Edit character"
-        icon={<IconSettings />}
+        icon={<AiOutlineSetting />}
         w="20px"
         position="absolute"
+        variant="outline"
         left={340}
         onClick={onOpen}
       />

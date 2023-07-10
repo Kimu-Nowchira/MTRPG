@@ -1,8 +1,7 @@
-import React, { useContext } from "react"
+import React from "react"
 import {
   Button,
   FormControl,
-  FormErrorMessage,
   FormLabel,
   Input,
   Modal,
@@ -11,17 +10,17 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  NumberInput,
   Select,
   Textarea,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react"
-import styled from "styled-components"
 import { useForm } from "react-hook-form"
-import GameContext from "../../context/GameContext"
-import { User } from "../../types"
+import { Player } from "../../types"
 import ValuesGroup from "../molecules/ValuesGroup"
+import { useRecoilState } from "recoil"
+import playersState from "../../recoil/atoms/players"
+import { AiOutlinePlus } from "react-icons/ai"
 
 const AddCharacterModal: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -32,10 +31,10 @@ const AddCharacterModal: React.FC = () => {
   } = useForm()
   const toast = useToast()
 
-  const { users, setUsers } = useContext(GameContext)
+  const [players, setPlayers] = useRecoilState(playersState)
 
   const onSubmit = (values: any) => {
-    const user: User = {
+    const user: Player = {
       id: Math.random().toString(36).substring(2, 9),
       name: values.name,
       level: 0,
@@ -54,7 +53,7 @@ const AddCharacterModal: React.FC = () => {
       },
     }
 
-    setUsers((prev) => [...prev, user])
+    setPlayers((prev) => [...prev, user])
     toast({
       title: "캐릭터가 추가되었습니다.",
     })
@@ -63,7 +62,13 @@ const AddCharacterModal: React.FC = () => {
 
   return (
     <>
-      {users.length < 4 ? <Button onClick={onOpen}>Add Character</Button> : ""}
+      {players.length < 4 ? (
+        <Button onClick={onOpen} w="100%">
+          <AiOutlinePlus />
+        </Button>
+      ) : (
+        ""
+      )}
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

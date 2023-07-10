@@ -1,9 +1,9 @@
 import React, { createContext } from "react"
-import { ItemData, User } from "../types"
+import { ItemData, Player } from "../types"
 
 interface GameContext {
-  users: User[]
-  setUsers: React.Dispatch<React.SetStateAction<User[]>>
+  users: Player[]
+  setUsers: React.Dispatch<React.SetStateAction<Player[]>>
   itemData: ItemData[]
 }
 

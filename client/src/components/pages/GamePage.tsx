@@ -1,82 +1,47 @@
 import React, { useState } from "react"
 import Status, { StatusType } from "../atoms/Status"
 import ProgressBar from "../atoms/ProgressBar"
-import styled from "styled-components"
 import UserProfile from "../organisms/UserProfile"
-import GameContext from "../../context/GameContext"
-import { sampleProfile } from "../../test"
 import AddCharacterModal from "../organisms/AddCharacterModal"
-import { ItemData, User } from "../../types"
-import { Card, CardBody } from "@chakra-ui/react"
+import { ItemData } from "../../types"
+import { Box, Card, CardBody, HStack, Stack, VStack } from "@chakra-ui/react"
+import Header from "../organisms/Header"
+import ChatLog from "../organisms/ChatLog"
+import { RecoilRoot, useRecoilState } from "recoil"
+import playersState from "../../recoil/atoms/players"
 
 const GamePage: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([sampleProfile])
+  const [players, setPlayers] = useRecoilState(playersState)
   const [itemData, setItemData] = useState<ItemData[]>([])
 
   return (
-    <GameContext.Provider value={{ users, setUsers, itemData }}>
-      <Body>
-        <LeftPanel>
-          <AddCharacterModal />
-          {users.map((user) => (
-            <UserProfile profile={user} />
-          ))}
-        </LeftPanel>
-        <CenterPanel>
-          <Card h="100%">
-            <CardBody>
-              {JSON.stringify(users)}
-              <Status statusType={StatusType.Strength} value={2} />
-              <Status statusType={StatusType.Strength} value={2} />
-              <Status statusType={StatusType.Strength} value={2} />
-              <Status statusType={StatusType.Strength} value={2} />
-              <ProgressBar min={18} max={20} />
-            </CardBody>
-          </Card>
-        </CenterPanel>
-      </Body>
-    </GameContext.Provider>
+    <>
+      <VStack w="100vw" h="100vh">
+        <Header />
+        <HStack h="100%" w="100vw" p={5}>
+          <Stack flexDir={"column-reverse"} h="100%">
+            <AddCharacterModal />
+            {players.map((user) => (
+              <UserProfile profile={user} />
+            ))}
+          </Stack>
+          <Box w="100%">
+            <Card h="100%">
+              <CardBody>
+                {JSON.stringify(players)}
+                <Status statusType={StatusType.Strength} value={2} />
+                <Status statusType={StatusType.Strength} value={2} />
+                <Status statusType={StatusType.Strength} value={2} />
+                <Status statusType={StatusType.Strength} value={2} />
+                <ProgressBar min={18} max={20} />
+              </CardBody>
+            </Card>
+          </Box>
+          <ChatLog />
+        </HStack>
+      </VStack>
+    </>
   )
 }
-
-const Paper = styled.div`
-  display: flex;
-  background-color: #ffffff;
-  flex-direction: column;
-  border-radius: 20px;
-  width: 100%;
-  height: 500px;
-  padding: 20px;
-  gap: 10px;
-`
-
-const LeftPanel = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  padding: 20px;
-  padding-right: 10px;
-  gap: 20px;
-  width: 500px;
-`
-
-const CenterPanel = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  padding-right: 10px;
-  padding-left: 10px;
-  gap: 20px;
-  width: 100%;
-`
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  height: 100vh;
-  padding: 0;
-
-  background-color: var(--color-stone-200);
-`
 
 export default GamePage

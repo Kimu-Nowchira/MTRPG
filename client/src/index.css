@@ -13,7 +13,6 @@ body {
 }
 
 :root {
-  background-color: var(--color-stone-800) !important;
   --color-stone-50: #fafaf9;
   --color-stone-100: #f5f5f4;
   --color-stone-200: #e7e5e4;

@@ -1,9 +1,11 @@
 import Status, { StatusType } from "../atoms/Status"
 import React from "react"
-import { UserStatus } from "../../types"
+import { PlayerStatus } from "../../types"
 import { HStack, VStack } from "@chakra-ui/react"
 
-const StatusGroup: React.FC<{ statusData: UserStatus }> = ({ statusData }) => {
+const StatusGroup: React.FC<{ statusData: PlayerStatus }> = ({
+  statusData,
+}) => {
   return (
     <HStack gap="0">
       <VStack>

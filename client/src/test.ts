@@ -1,6 +1,6 @@
-import { User } from "./types"
+import { Player } from "./types"
 
-export const sampleProfile: User = {
+export const sampleProfile: Player = {
   id: "u3uieufirj",
   name: "홍길동",
   status: {
